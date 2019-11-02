@@ -1,5 +1,6 @@
 package pl.coderslab.dao;
 
+import pl.coderslab.model.Solution;
 import pl.coderslab.model.User;
 import java.sql.*;
 import java.util.Arrays;
@@ -10,6 +11,7 @@ public class UserDao {
     private static final String UPDATE_USER_QUERY ="UPDATE users SET username = ?, email = ?, password = ? where id = ?";
     private static final String DELETE_USER_QUERY ="DELETE FROM users WHERE id = ?";
     private static final String FIND_ALL_USERS_QUERY ="SELECT * FROM users";
+    private static final String FIND_ALL_USERS_BY_GROUP_ID_QUERY ="Select * from users where user_group_id = ?";
 
     public User create(User user) {
         try (Connection conn = DButil.connect()) {
@@ -96,4 +98,33 @@ public class UserDao {
         tmpUsers[users.length] = u;
         return tmpUsers;
     }
+
+    public User[] findAllByGroupId(int group_id) {
+        try (Connection conn = DButil.connect()) {
+            User[] users = new User[0];
+            PreparedStatement statement = conn.prepareStatement(FIND_ALL_USERS_BY_GROUP_ID_QUERY);
+            statement.setInt(1, group_id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setUserName(resultSet.getString("username"));
+                user.setEmail(resultSet.getString("email"));
+                user.setPassword(resultSet.getString("password"));
+                users =  addToArrayByGroupId(user, users);
+            }
+            return users;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    private User[] addToArrayByGroupId(User u, User[] users) {
+        User[] tmpUsers = Arrays.copyOf(users, users.length + 1);
+        tmpUsers[users.length] = u;
+        return tmpUsers;
+    }
+
+
 }
