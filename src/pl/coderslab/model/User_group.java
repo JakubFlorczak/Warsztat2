@@ -1,5 +1,9 @@
 package pl.coderslab.model;
 
+import pl.coderslab.dao.User_GroupDAO;
+
+import java.util.Scanner;
+
 public class User_group {
 
     private int id;
@@ -36,4 +40,5 @@ public class User_group {
     public void setName(String name) {
         this.name = name;
     }
+
 }

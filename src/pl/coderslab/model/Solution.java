@@ -1,15 +1,35 @@
 package pl.coderslab.model;
 
+
+import pl.coderslab.dao.ExerciseDAO;
+import pl.coderslab.dao.SolutionDAO;
+import pl.coderslab.dao.UserDao;
+
+import java.sql.Timestamp;
+import java.util.Scanner;
+
 public class Solution {
 
     private int id;
-    private String created;
-    private String updated;
+    private Timestamp created;
+    private Timestamp updated;
     private String description;
-    private String users_id;
+    private int users_id;
+    private int exercise_id;
 
+    @Override
+    public String toString() {
+        return "Solution{" +
+                "id=" + id +
+                ", created=" + created +
+                ", updated=" + updated +
+                ", description='" + description + '\'' +
+                ", users_id=" + users_id +
+                ", exercise_id=" + exercise_id +
+                '}';
+    }
 
-    public Solution(int id, String created, String updated, String description) {
+    public Solution(int id, Timestamp created, Timestamp updated, String description) {
         this.id = id;
         this.created = created;
         this.updated = updated;
@@ -27,19 +47,19 @@ public class Solution {
         this.id = id;
     }
 
-    public String getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(String created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 
-    public String getUpdated() {
+    public Timestamp getUpdated() {
         return updated;
     }
 
-    public void setUpdated(String updated) {
+    public void setUpdated(Timestamp updated) {
         this.updated = updated;
     }
 
@@ -51,11 +71,21 @@ public class Solution {
         this.description = description;
     }
 
-    public String getUsers_id() {
+    public int getUsers_id() {
         return users_id;
     }
 
-    public void setUsers_id(String users_id) {
+    public void setUsers_id(int users_id) {
         this.users_id = users_id;
     }
+
+    public int getExercise_id() {
+        return exercise_id;
+    }
+
+    public void setExercise_id(int exercise_id) {
+        this.exercise_id = exercise_id;
+    }
+
+
 }

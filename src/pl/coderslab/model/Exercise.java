@@ -1,5 +1,9 @@
 package pl.coderslab.model;
 
+import pl.coderslab.dao.ExerciseDAO;
+
+import java.util.Scanner;
+
 public class Exercise {
 
     private int id;
@@ -39,4 +43,5 @@ public class Exercise {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

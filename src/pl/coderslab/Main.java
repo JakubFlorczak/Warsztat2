@@ -24,14 +24,16 @@ public class Main {
 //
 //        User deleted = userDao.read(1);
 //        System.out.println(deleted);
-        for ( int i = 0; i<5; i++){
-            userDao.create(new User ("user" +i, "email" + i + "@gmail.com", "haslo"));
-        }
+//        for ( int i = 0; i<5; i++){
+//            userDao.create(new User ("user" +i, "email" + i + "@gmail.com", "haslo"));
+//        }
+//
+//        User [] users = userDao.findAll();
+//        for (User user : users){
+//            System.out.println(user);
+//        }
 
-        User [] users = userDao.findAll();
-        for (User user : users){
-            System.out.println(user);
-        }
+
     }
 
 }

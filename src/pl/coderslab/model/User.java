@@ -1,6 +1,11 @@
 package pl.coderslab.model;
 
+import javafx.css.converter.LadderConverter;
 import org.mindrot.jbcrypt.BCrypt;
+import pl.coderslab.dao.UserDao;
+import pl.coderslab.dao.User_GroupDAO;
+
+import java.util.Scanner;
 
 public class User {
     private int id;
@@ -63,4 +68,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
 }
